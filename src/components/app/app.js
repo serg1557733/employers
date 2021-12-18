@@ -14,15 +14,22 @@ class App extends Component {
         super(props);
     this.state = { 
         data : [
-                {name: 'Sergey Stepanov', salary: 800, increase: true, rise: false, id:1},
-                {name:'Ivan Martinov', salary: 1500, increase: false, rise: true, id:2},
-                {name:'Dima Rasolnik', salary: 2500, increase: false, rise: false, id:3},
+             
             ],
         term: '',
         filter: 'all'    
         }
     this.maxId = 4;
-    }   
+    } 
+    
+    getData = ({data}) => {
+       this.setState(({data}) => {
+       fetch('https://jsonplaceholder.typicode.com/users').then(items => items.json()).then(res => res.map((item, i) => ({data: data.push(item)}) ))
+        }) 
+    }
+    
+        
+
 
     deleteItem = (id) => {
         this.setState(({data}) => {
@@ -120,6 +127,7 @@ onFilterSelect = (filter) => {
     render() {
         const {data, term, filter} = this.state;
         const visibleData =this.filterPost(this.searchEmp(data, term), filter) ;
+        this.getData({data});
             return (
                         <div className="app">
                             <AppInfo  data={this.state.data}/>
