@@ -14,7 +14,11 @@ class App extends Component {
         super(props);
     this.state = { 
         data : [
-             
+            { name: 'Ivan Petrov', salary: 2500, increase: false, rise: false, id: 1},
+            { name: 'Serg Ivanov', salary: 7500, increase: false, rise: false, id: 2},
+            { name: 'Max Korj', salary: 500, increase: false, rise: false, id: 3},
+            { name: 'Vlad Raskov', salary: 200, increase: false, rise: false, id: 4},
+            { name: 'Semen Danko', salary: 1500, increase: false, rise: false, id: 5},  
             ],
         term: '',
         filter: 'all'    
@@ -22,11 +26,11 @@ class App extends Component {
     this.maxId = 4;
     } 
     
-    getData = ({data}) => {
+   /*  getData = ({data}) => {
        this.setState(({data}) => {
-       fetch('https://jsonplaceholder.typicode.com/users').then(items => items.json()).then(res => res.map((item, i) => ({data: data.push(item)}) ))
+       fetch('https://jsonplaceholder.typicode.com/users').then(items => items.json()).then(res => res.map((item, i) => ({data: data.push(item), maxId: i}) ))
         }) 
-    }
+    } */
     
         
 
@@ -127,7 +131,7 @@ onFilterSelect = (filter) => {
     render() {
         const {data, term, filter} = this.state;
         const visibleData =this.filterPost(this.searchEmp(data, term), filter) ;
-        this.getData({data});
+        //this.getData({data});
             return (
                         <div className="app">
                             <AppInfo  data={this.state.data}/>

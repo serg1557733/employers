@@ -30,21 +30,21 @@ class EmployersAddForm extends Component {
         const {onAddEmployes} = this.props;
         return (
             <div className="app-add-form">
-                <h3>Добавьте нового сотрудника</h3>
+                <h3>Добавить нового сотрудника</h3>
                 <form
                     className="add-form d-flex" onSubmit = {this.onSubmit}>
                         
                     <input 
                         type="text"
                         className="form-control new-post-label"
-                        placeholder="Фамилия Имя нового сотрудника?"
+                        placeholder="Фамилия Имя"
                         onChange={this.onValueChange} 
                         name ='name'
                         value={name}/>
                     <input 
                     type="number"
                         className="form-control new-post-label"
-                        placeholder="З/П в $?" 
+                        placeholder="З/П $?" 
                         onChange={this.onValueChange}
                         name ='salary'
                         value={salary}/>
